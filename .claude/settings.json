@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\n## [%s] TURN END\\ntool=Claude Code\\nrepo_root=/Users/gke/Desktop/Github/HackerRank/hackerrank-orchestrate-may26\\n' \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\" >> \"$HOME/hackerrank_orchestrate/log.txt\""
+          }
+        ]
+      }
+    ]
+  }
+}
