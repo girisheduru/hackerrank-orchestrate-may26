@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  triage-agent:
+    build: .
+    env_file:
+      - .env
+    environment:
+      - TRIAGE_LLM_PROVIDER=${TRIAGE_LLM_PROVIDER:-anthropic}
+      - TRIAGE_LLM_MODEL=${TRIAGE_LLM_MODEL:-claude-sonnet-4-6}
+      - TRIAGE_DATA_DIR=/app/data
+      - TRIAGE_INPUT_CSV=/app/support_tickets/support_tickets.csv
+      - TRIAGE_OUTPUT_CSV=/app/support_tickets/output.csv
+    volumes:
+      - ./support_tickets:/app/support_tickets
+      - ./data:/app/data:ro
+    command: ["run", "--tail"]

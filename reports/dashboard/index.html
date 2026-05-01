@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Triage Agent — Test Dashboard</title>
+  <style>
+    body { font-family: 'JetBrains Mono', monospace; background: #0B0F14; color: #E5E7EB; margin: 0; padding: 24px; }
+    h1 { color: #60A5FA; } h2 { color: #38BDF8; border-bottom: 1px solid #1F2937; padding-bottom: 6px; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-weight: 700; margin: 4px; }
+    .pass { background: #052E16; color: #22C55E; } .fail { background: #3F0D0D; color: #EF4444; }
+    .skip { background: #1C1917; color: #F59E0B; } .total { background: #111827; color: #38BDF8; }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 12px; }
+    th { background: #111827; color: #9CA3AF; padding: 6px 10px; text-align: left; }
+    td { border: 1px solid #1F2937; padding: 6px 10px; vertical-align: top; }
+    pre { margin: 0; white-space: pre-wrap; word-break: break-all; }
+    .summary { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>🤖 Triage Agent — Test Dashboard</h1>
+  <p style="color:#9CA3AF">Generated: 2026-05-01T22:13:30Z</p>
+
+  <h2>Test Summary</h2>
+  <div class="summary">
+    <span class="badge total">Total: 29</span>
+    <span class="badge pass">Passed: 21</span>
+    <span class="badge fail">Failed: 0</span>
+    <span class="badge skip">Skipped: 8</span>
+    <span class="badge fail">Errors: 0</span>
+  </div>
+
+  <h2>Failed Tests</h2>
+  <table>
+    <thead><tr><th>Class</th><th>Test</th><th>Message</th></tr></thead>
+    <tbody><tr><td colspan=3>All tests passed ✓</td></tr></tbody>
+  </table>
+
+  <h2>Input CSV Preview (first 5 rows)</h2>
+  <table><thead><tr><th>Issue</th><th>Subject</th><th>Company</th></tr></thead><tbody><tr><td>I lost access to my Claude team workspace after our IT admin removed my seat. 
+P</td><td>Claude access lost</td><td>Claude</td></tr><tr><td>I completed a HackerRank test, but the recruiter rejected me. Please review my a</td><td>Test Score Dispute</td><td>HackerRank</td></tr><tr><td>I used my Visa card to buy something online, but the merchant sent the wrong pro</td><td>Help</td><td>Visa</td></tr><tr><td>My mock interviews stopped in between, please give me the refund asap</td><td>Why are my mock interviews not working</td><td>HackerRank</td></tr><tr><td>I had an issue with my payment with order ID: cs_live_abcdefgh. Can you help me?</td><td>Give me my money</td><td>HackerRank</td></tr></tbody></table>
+
+  <h2>Output CSV Preview (first 5 rows)</h2>
+  <table><thead><tr><th>issue</th><th>subject</th><th>company</th><th>response</th><th>product_area</th><th>status</th><th>request_type</th><th>justification</th></tr></thead><tbody><tr><td>I lost access to my Claude team workspace after our IT admin removed my seat. 
+P</td><td>Claude access lost</td><td>Claude</td><td>Your request has been escalated to a human support agent who will contact you sh</td><td>general</td><td>escalated</td><td>product_issue</td><td>Safety gate triggered: unauthorized account restoration</td></tr><tr><td>I completed a HackerRank test, but the recruiter rejected me. Please review my a</td><td>Test Score Dispute</td><td>HackerRank</td><td>Based on our support documentation, please refer to: Greenhouse-HackerRank Integ</td><td>integrations</td><td>replied</td><td>product_issue</td><td>Retrieved from: Greenhouse-HackerRank Integration FAQs API Token and Access Test</td></tr><tr><td>I used my Visa card to buy something online, but the merchant sent the wrong pro</td><td>Help</td><td>Visa</td><td>Your request has been escalated to a human support agent who will contact you sh</td><td>general</td><td>escalated</td><td>product_issue</td><td>Safety gate triggered: billing/refund request</td></tr><tr><td>My mock interviews stopped in between, please give me the refund asap</td><td>Why are my mock interviews not working</td><td>HackerRank</td><td>Your request has been escalated to a human support agent who will contact you sh</td><td>general</td><td>escalated</td><td>product_issue</td><td>Safety gate triggered: billing/refund request</td></tr><tr><td>I had an issue with my payment with order ID: cs_live_abcdefgh. Can you help me?</td><td>Give me my money</td><td>HackerRank</td><td>Based on our support documentation, please refer to: Subscriptions, Payments, an</td><td>general</td><td>replied</td><td>product_issue</td><td>Retrieved from: Subscriptions, Payments, and Billing FAQs Mock interviews Subscr</td></tr></tbody></table>
+</body>
+</html>
