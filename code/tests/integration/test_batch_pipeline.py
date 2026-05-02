@@ -19,20 +19,27 @@ NEEDS_API = pytest.mark.skipif(
 )
 
 
-@pytest.fixture(scope="module")
-def pipeline(data_dir):
-    return TriagePipeline(data_dir=data_dir, seed=42)
+REPO_ROOT = Path(__file__).parent.parent.parent.parent.resolve()
 
 
 @pytest.fixture(scope="module")
-def sample_results(pipeline, sample_csv):
+def pipeline():
+    return TriagePipeline(data_dir=REPO_ROOT / "data", seed=42)
+
+
+@pytest.fixture(scope="module")
+def sample_results(pipeline):
+    sample_csv = REPO_ROOT / "support_tickets" / "sample_support_tickets.csv"
     tickets = read_tickets(sample_csv)
     return [pipeline.process_ticket(t) for t in tickets]
 
 
+_SAMPLE_CSV = REPO_ROOT / "support_tickets" / "sample_support_tickets.csv"
+
+
 @NEEDS_API
-def test_sample_all_rows_processed(sample_results, sample_csv):
-    tickets = read_tickets(sample_csv)
+def test_sample_all_rows_processed(sample_results):
+    tickets = read_tickets(_SAMPLE_CSV)
     assert len(sample_results) == len(tickets)
 
 
@@ -58,9 +65,9 @@ def test_sample_at_least_one_escalation(sample_results):
 
 
 @NEEDS_API
-def test_sample_out_of_scope_is_invalid(sample_results, sample_csv):
+def test_sample_out_of_scope_is_invalid(sample_results):
     """'What is the name of the actor in Iron Man?' → invalid."""
-    tickets = read_tickets(sample_csv)
+    tickets = read_tickets(_SAMPLE_CSV)
     for ticket, result in zip(tickets, sample_results):
         if "iron man" in ticket.issue.lower() or "actor" in ticket.issue.lower():
             assert result.request_type == "invalid", (
